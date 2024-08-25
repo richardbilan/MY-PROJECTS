@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>National Landmarks</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Norwester&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="project design.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"     >
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("https://scontent.xx.fbcdn.net/v/t1.15752-9/368557328_1699346800543822_4421794963559422738_n.jpg?stp=dst-jpg_p206x206&_nc_cat=106&ccb=1-7&_nc_sid=510075&_nc_eui2=AeEc7-steUcO_JrUDBr933ElVS8J2xoDeS1VLwnbGgN5LWxaX-j3dVO3-s6N45PyxCcOcQ0dpm4czsNPorcC8VQS&_nc_ohc=6-zUPFuyO2wAX_0hR2I&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQRcD19HoaIj2pfzHAq74hTfdCml_o9u-jJB0XuEUGnbw&oe=65840097");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    align-items: center;
+}
+
+
+        .header {
+            background-color: #7E7C41;
+            width: 80%;
+            max-width: 450px;
+            height: 80px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            color: #efdbb3;
+            font-family: 'Norwester';
+            font-size: 3em;
+        }
+        
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+               
+        }
+
+        .container {
+            width: 100%;
+            margin: 0px auto;
+            padding: 50px;
+        }
+        
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 25px;
+        }
+
+        .card {
+            background-color: #a27236;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 600px;
+        }
+        
+        .card img{
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 10px;   
+        }
+        
+        .card h3{
+            color: #ffffff;
+            font-size: 28px;
+        }
+        
+        .card p{
+            color: #ffffff;
+            margin-top: 5px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .card {
+            position: relative;
+            perspective: 1000px; 
+            cursor: pointer; 
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .card-flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .card-front {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color:  #a27236;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-color: #a27236;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.sidebar .toggle-btn span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #333;
+    transform: translateY(-50%);
+    transition: all 300ms ease-in-out;
+}
+
+.sidebar .toggle-btn span:nth-child(1) {
+    top: 10%;
+}
+
+.sidebar .toggle-btn span:nth-child(2) {
+    top: 50%;
+}
+
+.sidebar .toggle-btn span:nth-child(3) {
+    top: 90%;
+}
+
+.sidebar .links a {
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+    color: #f5f5f5;
+    cursor: pointer;
+    border-bottom: 1px solid #1b1b1b;
+}
+
+.sidebar .links a.active{
+    background: #6A6F4C
+} 
+
+.sidebar .links a:hover {
+    background: #CBB89D;
+    color: #000000;
+}
+
+.sidebar .links a i {
+    display: inline-block;
+    margin: 10px;
+}
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #6A6F4C;
+    transition: all 300ms ease-in-out;
+    z-index: 1; 
+}
+
+.sidebar.active {
+    left: 0px;
+    z-index: 2; 
+}
+
+
+.sidebar.active .toggle-btn span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.sidebar.active .toggle-btn span:nth-child(2) {
+    display: none;
+}
+
+.sidebar.active .toggle-btn span:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+.search-toggle {
+    position: absolute;
+    right: 20px; 
+    top: 20px; 
+    display: flex;
+    align-items: center;
+}
+
+.search-toggle input[type="text"] {
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 50px;
+    width: 200px;
+    background-color: #eee0ca;
+}
+
+.search-toggle i {
+    margin-left: 10px; 
+    color: #333;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+
+<body>
+    
+    <div class="sidebar active">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    
+        <div class="links">
+            <a href="PROJECTT.html" class="active">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+            <a href="Heroes.html">
+                <i class="far fa-user-circle"></i>
+                PHILLIPINE HEROES
+            </a>
+            <a href="Landmarks.html">
+                <i class="fab fa-codepen"></i>
+                NATIONAL LANDMARKS
+            </a>
+            <a href="National Symbols.html">
+                <i class="fa fa-comment-alt"></i>
+                NATIONAL SYMBOLS
+            </a>
+            <a href="Quiz.html">
+                <i class="fa fa-bell"></i>
+                QUIZ
+            </a>
+        </div>
+    </div>
+    <div class="header">
+        <h1>Cultural Landmarks</h1>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card" onclick="toggleCard(this)"> 
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="mayon volcano.jpg">
+                        <h3>Mt. Mayon Volcano</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>The Mayon Volcano is situated in the southern part of the main island of Luzon, 500 kilometres south of Manila. Towering at a height of 2,462 meters above sea level, it is known for its perfectly conical shape whose natural beauty has inspired a number of legends and art.
+                            Mount Mayon is an active stratovolcano located in the Philippines on the island of Luzon. Known for its nearly perfect cone shape, it's considered one of the most beautiful volcanoes in the world. Rising more than 8,000 feet above sea level, it has a history of frequent eruptions,
+                            making it both a natural wonder and a potential hazard to the surrounding areas. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="basco light house.jpg">
+                        <h3>Basco Light House</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Standing at 66 feet, the Basco Lighthouse towers over the island of Batan and is one of the three main lighthouses in the province of Batanes. It has also served as a guide for the local fisherfolk since it was constructed in 2003.The Basco Lighthouse is a picturesque landmark located in Basco, 
+                            the capital of Batanes in the Philippines. Standing on Naidi Hills overlooking the West Philippine Sea, it's a majestic white structure with a stone base and a tower painted in vibrant colors. The lighthouse offers stunning panoramic views of the surrounding landscapes, including rolling hills, 
+                            cliffs, and the oceans.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="puerto princesa.jpg">
+                        <h3>Puerto Princesa Islands</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Puerto Princesa is a city located on the island of Palawan in the Philippines. Known for its stunning natural beauty, it's often called the "City in a Forest" due to its lush landscapes and rich biodiversity. The city serves as a gateway to several attractions, including the Puerto Princesa Subterranean River National Park,
+                            a UNESCO World Heritage Site famous for its underground river, limestone cliffs, and diverse ecosystem. The islands around Puerto Princesa offer breathtaking beaches, crystal-clear waters, and opportunities for snorkeling, diving, and island hopping.s</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="banaue rice terraces.jpg">
+                        <h3>Banaue Rice Terraces</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>The Banaue Rice Terraces (Filipino: Hagdan-hagdang Palayan ng Banawe) are terraces that were carved into the mountains of 
+                            Banaue, Ifugao, in the Philippines, by the ancestors of the Igorot people. The terraces are occasionally called the "Eighth 
+                            Wonder of the World".The Banaue Rice Terraces are a stunning UNESCO World Heritage site located in the Philippines. 
+                            Carved into the Ifugao mountains around 2,000 years ago by the indigenous people using mostly hand tools, these terraces showcase an ancient 
+                            engineering marvel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="boracay.jpg">
+                        <h3>Boracay</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Boracay is a small island in the Philippines known for its stunning white sand beaches and crystal-clear waters. It's a popular tourist destination offering a vibrant nightlife, 
+                            water sports like snorkeling and diving, and breathtaking sunsets. The island is divided into different beach areas, each with its own vibe; White Beach is famous for its powdery sand 
+                            and lively atmosphere, while Bulabog Beach is a hotspot for water sports enthusiasts. With its tropical climate and beautiful scenery, Boracay is a haven for relaxation and adventure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="windmills.jpg">
+                        <h3>Bangui Windmills</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>The Bangui Windmills are a collection of giant wind turbines situated along the coastline of Bangui Bay in Ilocos Norte, Philippines. 
+                            These iconic windmills stand tall, typically around 70 meters high, and form a striking panorama against the backdrop of the sea. There are around 20 to 30 wind turbines, generating renewable energy for the region. Visiting the site offers a picturesque view and a chance to witness sustainable energy production in action.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="chocolate hills.jpg">
+                        <h3>Chocolate Hills</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>The hills are located throughout the towns of Carmen, Batuan and Sagbayan and consist of about 1,776 mounds of the same 
+                            general shape. During the dry season when precipitation in inadequate, the grass-covered hills turn chocolate brown, hence 
+                            the name in reference to a branded confection.This unique landscape is a popular tourist attraction, drawing visitors from around the world to marvel at its stunning and unusual natural beauty.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="tubbataha reef.jpg">
+                        <h3>Tubbataha Reef</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Certainly! Tubbataha Reef is a UNESCO World Heritage Site located in the Sulu Sea in the Philippines. 
+                            It's renowned for its incredible biodiversity and pristine coral reefs. Spanning roughly 97,030 hectares, it consists of two coral atolls with a stunning array of marine life, including over 600 species of fish, sharks, turtles, and various coral species. Tubbataha is a haven for divers due to its crystal-clear waters and the opportunity to witness vibrant marine ecosystems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="fort santiago.jpg">
+                        <h3>Fort Santiago</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Fort Santiago is a historic citadel located in Manila, Philippines. It served as a key defense fortress during the Spanish colonial period and played a significant role in Philippine history. 
+                            Built in the late 16th century, it features thick stone walls, dungeons, and a well-preserved gate called the "Puerta Real." The fort also includes a shrine dedicated to national hero Jose Rizal, who was imprisoned there before his execution in 1896. 
+                            Today, Fort Santiago stands as a popular tourist attraction and a symbol of the country's rich cultural heritage.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="taal.jpg">
+                        <h3>Taal Lake</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Taal is a stratovolcano with a crater lake on a 5-km-wide volcanic island within a large caldera (Lake Taal) in the SW part of Luzon, Philippines, about 65 km S of Manila.
+                            Taal Lake is a freshwater lake situated in the province of Batangas, Philippines. What makes it unique is the presence of Taal Volcano, an active volcano located on Volcano Island within the lake. The volcano's crater lake is often referred to as the "lake within a lake." 
+                            Taal Lake's scenic beauty, along with the captivating sight of the volcano within it, attracts tourists and visitors from around the world.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleCard(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="magellan_s church.jpg">
+                    <h3>Magellan's Church</h3>
+                </div>
+                <div class="card-back">
+                    <p>Magellan's Cross is a historical landmark located in Cebu City, Philippines. It's a Christian cross planted by Portuguese and Spanish explorers led by Ferdinand Magellan upon arriving in Cebu in 1521. 
+                        The cross symbolizes the introduction of Christianity to the Philippines and marks the spot where Magellan supposedly planted the cross to commemorate the conversion of Rajah Humabon, the ruler of Cebu, and his followers to Christianity.
+                        The original cross is encased in another wooden cross to protect it from people chipping away parts as souvenirs. This site holds significance in Philippine history as a symbol of the country's Christianization.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="toggleCard(this)">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="rizal park.jpg">
+                        <h3>Rizal Park</h3>
+                    </div>
+                    <div class="card-back">
+                        <p>Rizal Park, also known as Luneta Park, is a historical urban park located in Manila, Philippines. It's named after Dr. Jose Rizal, a national hero, and is a significant symbol of Filipino nationalism and patriotism. 
+                           The park spans over 50 hectares and features gardens, ponds, historical markers, and monuments, including the Rizal Monument, which stands at its center. The monument honors Jose Rizal's life and contributions to the Philippines' independence movement. 
+                           Rizal Park is not only a popular tourist destination but also serves as a venue for various cultural events, gatherings, and protests, embodying both historical importance and contemporary relevance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <script>
+    function toggleCard(card) {
+        card.classList.toggle('card-flipped');
+    }
+
+    function toggleMenu() {
+        const menu = document.querySelector('.menu-bar');
+        menu.classList.toggle('open');
+    }
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.querySelector(".sidebar").classList.remove("active");
+                    
+                    document.querySelector(".sidebar .toggle-btn").addEventListener("click", function() { 
+                        document.querySelector(".sidebar").classList.toggle("active");
+                    });
+                });
+</script>
+
+     
+
+</body>
+
+</html>

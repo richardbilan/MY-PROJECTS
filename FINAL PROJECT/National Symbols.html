@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>National Symbols</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Norwester&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="project design.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("background1.png");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+        .header {
+            background-color: #7E7C41;
+            position: fixed;
+            width: 80%;
+            max-width: 450px;
+            height: 80px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .header h1 {
+            color: #efdbb3;
+            font-family: 'Norwester';
+            font-size: 3em;
+        }
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        .swiper-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0px auto;
+            padding: 50px;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+        }
+
+        .swiper-slide {
+            width: 300px; 
+            box-sizing: border-box;
+            margin-right: 25px; 
+        }
+
+        .card {
+            background-color: #a27236;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            margin-top: 150px;
+        }
+
+        .card img{
+            width: 100%;
+            height: 35%;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 10px;   
+        }
+
+        .card h3{
+            color: #ffffff;
+            font-size: 28px;
+            margin-bottom: 1px;
+        }
+        
+        .card h4{
+            color: #ffffff;
+            font-size: 20px;
+        }
+
+        .card p{
+            color: #ffffff;
+            margin-top: 0px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        @media screen and (max-width: 600px) {
+       .swiper-container {
+        padding: 20px; 
+       }
+
+       .swiper-slide {
+        margin-right: 15px; 
+       }
+       }
+        
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000; /*pang front layer*/
+}
+
+
+
+.sidebar .toggle-btn span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #333;
+    transform: translateY(-50%);
+    transition: all 300ms ease-in-out;
+}
+
+.sidebar .toggle-btn span:nth-child(1) {
+    top: 10%;
+}
+
+.sidebar .toggle-btn span:nth-child(2) {
+    top: 50%;
+}
+
+.sidebar .toggle-btn span:nth-child(3) {
+    top: 90%;
+}
+
+.sidebar .links a {
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+    color: #f5f5f5;
+    cursor: pointer;
+    border-bottom: 1px solid #1b1b1b;
+}
+
+.sidebar .links a.active{
+    background: #6A6F4C
+} 
+
+.sidebar .links a:hover {
+    background: #CBB89D;
+    color: #000000;
+}
+
+.sidebar .links a i {
+    display: inline-block;
+    margin: 10px;
+}
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #6A6F4C;
+    transition: all 300ms ease-in-out;
+    z-index: 1; /*pang layer*/
+}
+
+.sidebar.active {
+    left: 0px;
+    z-index: 2; /*pang layer*/
+}
+
+
+.sidebar.active .toggle-btn span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.sidebar.active .toggle-btn span:nth-child(2) {
+    display: none;
+}
+
+.sidebar.active .toggle-btn span:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+.search-toggle {
+    position: absolute;
+    right: 20px;
+    top: 20px; 
+    display: flex;
+    align-items: center;
+}
+
+.search-toggle input[type="text"] {
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 50px;
+    width: 200px;
+    background-color: #eee0ca;
+}
+
+.search-toggle i {
+    margin-left: 10px;
+    color: #333;
+    cursor: pointer;
+}
+       
+
+    </style>
+</head>
+
+<body>
+ 
+    <div class="sidebar active">
+                <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    
+        <div class="links">
+            <a href="PROJECTT.html" class="active">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+            <a href="Heroes.html">
+                <i class="far fa-user-circle"></i>
+                PHILLIPINE HEROES
+            </a>
+            <a href="Landmarks.html">
+                <i class="fab fa-codepen"></i>
+                NATIONAL LANDMARKS
+            </a>
+            <a href="National Symbols.html">
+                <i class="fa fa-comment-alt"></i>
+                NATIONAL SYMBOLS
+            </a>
+            <a href="Quiz.html">
+                <i class="fa fa-bell"></i>
+                QUIZ
+            </a>
+        </div>
+    </div>
+    <div class="header">
+        <h1>National Symbols</h1>
+    </div>
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="Watawat.jpg">
+                    <h4>Watawat/Philippine Flag</h4>
+                    <p>Watawat is the Philippine flag that stands for our country. It has four colors. They are red, white, blue, and yellow. Red stands for bravery, white for purity, and blue for peace. Our flag has three stars and a sun. The three stars stand for Luzon, Visayas, and Mindanao. The sun stands for freedom and its eight rays stand for the eight provinces that revolted against the Spaniards.</p>
+                </div>
+            </div>
+
+      
+            
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="Sampaguita.jpg">
+                    <h3>Sampaguita</h3>
+                    <p>National Flower. Sampaguita is also known as Arabian Jasmine. It has white, star-shaped blossoms and has a sweet fragrance. It opens at night and wilts in less than a day. The white flowers are often made into garlands and its extract made into perfumes. In Filipino society, Sampaguita has a lot of importance because it symbolizes purity, fidelity, and hope.</p>
+                </div>
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="Lhinirang.jpg">
+                    <h3>Lupang Hinirang</h3>
+                    <p>The Philippine national anthem is entitled “Lupang Hinirang” and composed by Julian Felipe. “Lupang Hinirang” was first played publicly on June 12, 1898 during the proclamation of Philippine Independence. Its lyrics were adopted from the Spanish poem, Filipinas, which was written by José Palma.</p>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="Mango.jpg">
+                    <h3>Mango</h3>
+                    <p>National Fruit. Mango is a common sight in Philippine wet and dry markets. loved by the Filipino people eaten as fresh, processed as flavorings to ice creams and pastries and other delicacies. There are three well known variety of mango in the Philippines and these are Carabao mango, Pico and Katchamita (also known as Indian Mango).</p>
+                </div>     
+            </div>
+
+            <div class="swiper-slide">
+                <div class="card">
+                   <img src="kubo.jpg">
+                   <h3>Bahay-Kubo</h3>
+                   <p>National House. Bahay-kubo or nipa hut is built from nipa and bamboo and still seen in some parts of the country, particularly in the provinces.</p>
+               </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="card">
+                    <img src="Mfish.jpg">
+                    <h3>Bangus</h3>
+                    <p>National Fish. This milkfish also known as bangus has white sparkling scales. Bony, yet prized for its belly fat, which almost everyone fights for on the dinner table. Its flesh also has a deliciously exquisite taste.</p>
+                </div>                
+            </div>
+            
+            <div class="swiper-slide">
+             <div class="card">
+                <img src="narra.jpg">
+                <h3>Narra Tree</h3>
+                <p>National Tree. Narra (Pterocarpus indicus) is a beautiful and strong tree. It is a favorite wood for furniture but because there are only a few trees left, cutting down a Narra tree is no longer allowed. It is found in Bicol, Mindanao and the Cagayan Valley forests.</p>
+            </div>
+           </div>
+            
+            <div class="swiper-slide">
+               <div class="card">
+                 <img src="eagle.jpg">
+                 <h3>Philippine Eagle</h3>
+                 <p>National Bird. The Philippine eagle (pithecopaga jeffery) stands over 3 feet (1m) tall. It has a large, sharp, curved beak. It has feathers that seem to bristle on its head. It is a raptor. Raptors are excellent hunters.  It lives in tropical rain forests. It lays just one or two eggs each year. There are only a few of them now because of the vanishing trees in our mountains.</p>
+               </div>
+            </div>
+             
+            <div class="swiper-slide">
+               <div class="card">
+                 <img src="tiniklingg.jpg">
+                 <h3>Tinikling</h3>
+                 <p>National Dance. Tinikling is a traditional Philippine folkdance which originated during the Spanish colonial era. It is commonly performed on Filipino festivals, at school or theater performances.</p>
+               </div>
+            </div>
+            
+            <div class="swiper-slide">
+              <div class="card">
+                <img src="anahaww.jpg">
+                <h3>Anahaw</h3>
+                <p>National Leaf. It is an erect round-leaf fountain palm that grows natively and widely in the island of the Philippines. Anahaw leaf can be used for thatching and food wrapping.</p>
+              </div>
+            </div>
+            
+            <div class="swiper-slide">
+               <div class="card">
+                 <img src="barong.png">
+                 <h3>Barong Tagalog and Baro't Saya</h3>
+                 <p>National Custumes. Barong Tagalog is a traditional Filipino outfit for men, made from hand-sewn pineapple fiber. Baro't Saya on the on the other hand is a tradional Filipino outfit made for women. It is an ensemble that traditionally consists of four parts.(baro/camisa, saya, alampay, and tapis) </p>
+               </div>
+            </div>
+            
+            <div class="swiper-slide">
+               <div class="card">
+                 <img src="arnis.jpg">
+                 <h3>Arnis</h3>
+                 <p>National Sport. Arnis serves as a reminder of the struggles and hardships that the Philippines faced during the time where they were colonized by Spain. </p>
+               </div>                
+            </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 'auto',
+            spaceBetween: 25,
+        });
+        
+        function toggleMenu() {
+        const menu = document.querySelector('.menu-bar');
+        menu.classList.toggle('open');
+    }
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.querySelector(".sidebar").classList.remove("active");
+                    
+                    document.querySelector(".sidebar .toggle-btn").addEventListener("click", function() { 
+                        document.querySelector(".sidebar").classList.toggle("active");
+                    });
+                });
+     
+    </script>
+</body>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>National Heroes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Norwester&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Norwester&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="project design.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("background1.png");
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header {
+            background-color: #7E7C41;
+            width: 80%;
+            max-width: 450px;
+            height: 80px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            color: #efdbb3;
+            font-family: 'Norwester';
+            font-size: 3em;
+        }
+         .menu-bar {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000; 
+            cursor: pointer;
+        }
+
+        .menu-bar div {
+            width: 30px;
+            height: 4px;
+            background-color: #333;
+            margin: 6px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .menu-bar div:first-child {
+            margin-top: 0;
+        }
+
+        .menu-bar.open div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-bar.open div:first-child {
+            transform: rotate(45deg);
+            margin-top: 11px;
+        }
+
+        .menu-bar.open div:last-child {
+            transform: rotate(-45deg);
+            margin-top: -11px;
+        }
+
+        .menu-bar.open div {
+            background-color: #fff;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+               
+        }
+        
+
+        .container {
+            width: 100%;
+            margin: 0px auto;
+            padding: 50px;
+        }
+        
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 25px;
+        }
+
+        .card {
+    background-color: #a27236;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    width:  400px;
+   
+}
+
+.card img{
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 10px;   
+}
+
+.card h3{
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.card p{
+    color: #ffffff;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+  .scrollable-container {
+            width: 100%; 
+            height: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+         
+    
+        }
+
+        .grid {
+            display: inline-flex;
+            white-space: nowrap;
+        }
+
+        .card {
+            width: 250px;
+            height: 350px; 
+            margin-right: 20px;
+            display: inline-block;
+            
+        
+        }
+        .scrollable-container .card .card-content img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+    border-radius: 10px;
+   }
+
+        
+        .card-content {
+            text-align: center;
+            color: #fff;
+        }
+
+        .card-content img {
+            width: 90%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-content h3 {
+            margin-top: 10px;
+            font-size: 1.5em; 
+        }
+        .description {
+        font-family: 'Norwester', sans-serif; 
+        font-size: 18px; 
+        line-height: 1.6; 
+        color: #000000;
+        font-weight: bold; ;
+        }
+        .description-card {
+            font-family: 'Norwester', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #000000;
+            font-weight: bold;
+          }
+        .adjustable-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: Left;
+    color: #333;
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    background-color:#FFFDD0; 
+}
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: #6A6F4C;
+    transition: all 300ms ease-in-out;
+}
+
+.sidebar .toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.sidebar .toggle-btn span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #333;
+    transform: translateY(-50%);
+    transition: all 300ms ease-in-out;
+}
+
+.sidebar .toggle-btn span:nth-child(1) {
+    top: 10%;
+}
+
+.sidebar .toggle-btn span:nth-child(2) {
+    top: 50%;
+}
+
+.sidebar .toggle-btn span:nth-child(3) {
+    top: 90%;
+}
+
+.sidebar .links a {
+    display: block;
+    padding: 15px 10px;
+    text-decoration: none;
+    color: #f5f5f5;
+    cursor: pointer;
+    border-bottom: 1px solid #1b1b1b;
+}
+
+.sidebar .links a.active{
+    background: #6A6F4C
+} 
+
+.sidebar .links a:hover {
+    background: #CBB89D;
+    color: #000000;
+}
+
+.sidebar .links a i {
+    display: inline-block;
+    margin: 10px;
+}
+
+.sidebar.active {
+    left: 0px;
+}
+
+.sidebar.active .toggle-btn span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.sidebar.active .toggle-btn span:nth-child(2) {
+    display: none;
+}
+
+.sidebar.active .toggle-btn span:nth-child(3) {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+.search-toggle {
+    position: absolute;
+    right: 20px; 
+    top: 20px; 
+    display: flex;
+    align-items: center;
+}
+
+.search-toggle input[type="text"] {
+    padding: 15px;
+    border: 1px solid #333;
+    border-radius: 50px;
+    width: 200px;
+    background-color: #eee0ca;
+}
+
+.search-toggle i {
+    margin-left: 10px; 
+    color: #333;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+
+        <div class="sidebar active">
+            <div class="toggle-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        
+            <div class="links">
+                <a href="PROJECTT.html" class="active">
+                    <i class="fa fa-home"></i>
+                    Home
+                </a>
+                <a href="Heroes.html">
+                    <i class="far fa-user-circle"></i>
+                    PHILLIPINE HEROES
+                </a>
+                <a href="Landmarks.html">
+                    <i class="fab fa-codepen"></i>
+                    NATIONAL LANDMARKS
+                </a>
+                <a href="National Symbols.html">
+                    <i class="fa fa-comment-alt"></i>
+                    NATIONAL SYMBOLS
+                </a>
+                <a href="Quiz.html">
+                    <i class="fa fa-bell"></i>
+                    QUIZ
+                </a>
+            </div>
+        </div>
+
+
+    <div class="header">
+        <h1>National Heroes</h1>
+    </div>
+
+ <div class="adjustable-container">
+        <h2>Importance of National Heroes</h2>
+        <p>National heroes play a crucial role in shaping the identity and spirit of a nation. They often embody the values, courage, and sacrifice that inspire generations and unite people towards a common cause—freedom, justice, and independence.
+        These heroes stand as symbols of resilience, unwavering determination, and the relentless pursuit of liberty. Their contributions and sacrifices serve as guiding beacons, reminding us of the price paid for the freedoms we enjoy today
+        By honoring and remembering their legacies, we commemorate the struggles and triumphs that define our history and shape our collective aspirations for a better future.</p>
+    </div>
+
+   <div class="scrollable-container">
+        <div class="grid">
+            <div class="card" id="jose-rizal">
+                <div class="card-content">
+                    <img src="https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.15752-9/354774715_971270704216968_1558337433861179780_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeET75kTrDUlTkBn7Et5lHs5x1qqpF_rpk_HWqqkX-umTxUpeE7Uo3sYRqcJw73YQ4uqiEsRRIRtLsN9_5Xy7cIu&_nc_ohc=9-lUdkdQRo4AX8J1rdR&_nc_ht=scontent.fwnp1-1.fna&oh=03_AdT9dBCJl-mlSoX_gGXg3ld4pAtM2kzLkhoy5hqmH_oHaA&oe=65917013">
+                    <h3>Jose Rizal</h3>
+                </div>
+            </div>
+          <div class="description" id="jose-rizal-description" style="display: none;">
+    <h2>Jose Rizal</h2>
+    <p>Jose Rizal, a prominent Filipino nationalist and writer, born on June 19, 1861,</p>
+    <p>played a pivotal role in the Philippines' quest for independence from Spanish colonial rule.</p>
+    <p> Renowned for his literary works 'Noli Me Tangere' and 'El Filibusterismo,' he fearlessly exposed social injustices under Spanish rule, </p>
+    <p>inspiring his compatriots toward national consciousness.</p>
+    <p>Rizal's commitment to his ideals and his peaceful approach to seeking reforms earned him admiration and respect.</p>
+    <p>He believed in the power of knowledge and enlightenment to bring about societal progress and change.</p>
+    <p>Rizal's diverse talents spanned various fields, including ophthalmology and ethnology.</p>
+    <p>Despite his peaceful advocacy for social reform, his ideas led to his execution on December 30, 1896, fueling the flames of the Philippine Revolution.</p>
+    <p>He remains a revered national hero, embodying intellect, courage, and unwavering dedication to Filipino freedom.</p>
+</div>
+
+            <div class="grid">
+                <div class="card" id="andres-bonifacio">
+                    <div class="card-content">
+                    <img src="https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.15752-9/403604141_1422800421912990_5086161258043908145_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeG6VtOl-RzrzwRH4jnjuA1-nf-K4MGLoFGd_4rgwYugUWC2jRC5dbBZiQ5bnYH2J85dOoa8xFrAHSKErSLmlYmK&_nc_ohc=MrBFuz9YcDkAX-xvs7U&_nc_ht=scontent.fwnp1-1.fna&oh=03_AdQFuMzXjaFUE5Vh_FMHjHtIcag0QFV7fn-mwH3T7cftEQ&oe=65918138">
+                    <h3>Andres Bonifacio</h3>
+                </div>
+            </div>
+           <div class="description-card" id="andres-bonifacio-description" style="display: none;">
+          <h2>Andres Bonifacio</h2>
+     <p>Andres Bonifacio, a key figure in the Philippine revolution, was born on November 30, 1863.</p>
+        <p>He played an instrumental role in sparking the flames of resistance against Spanish colonial rule,</p>
+        <p>galvanizing the masses and founding the secret society known as the Katipunan,</p>
+        <p>which aimed for the country's liberation from oppressive foreign domination.</p>
+        <p>Bonifacio's unwavering commitment to independence and social justice fueled his leadership,</p>
+        <p>mobilizing Filipinos from diverse backgrounds toward the cause of national freedom.</p>
+        <p>His advocacy for equality and the rights of the common people resonated profoundly,</p>
+        <p>instilling a sense of unity and identity among those yearning for liberation.</p>
+        <p>Despite internal strife within the revolutionary movement,</p>
+        <p>Bonifacio's legacy endures as a symbol of courage, resilience, and the struggle for sovereignty.</p>
+        <p>He remains a revered national hero, embodying the spirit of the Filipino people's fight for self-determination.</p>
+    </div>
+
+
+
+            <div class="grid">
+              <div class="card" id="emilio-aguinaldo">  
+                <div class="card-content">
+                    <img src="https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.15752-9/403629060_884561942908694_4787869347105586755_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHyv34KmLWY3bNE7QqpbXXWWAheJptbXoNYCF4mm1tegyNeAZBygRjyuvWVMdjmyBZiUfu8_Ht3CQOvI4mMQAzt&_nc_ohc=76xVrEN47HkAX-c1KK-&_nc_ht=scontent.fwnp1-1.fna&oh=03_AdT2Lmq-2SAzzm3ap71c6ZZqOhIu_idoZt3AB-Is6HWK_Q&oe=65915D77">
+                    <h3>Emilio Aguinaldo</h3>
+                </div>
+            </div>
+            <div class="description-card" id="emilio-aguinaldo-description" style="display: none;">
+            <h2>Emilio Aguinaldo</h2>
+    <p>Emilio Aguinaldo, born on March 22, 1869, emerged as a prominent leader in the struggle for Philippine independence.</p>
+        <p>He played a pivotal role in the later stages of the revolution against Spanish rule,</p>
+        <p>ascending as the first president of the Philippines and leading the nation's nascent government.</p>
+        <p>Aguinaldo's passionate dedication to the cause of liberation saw him become a central figure in shaping the country's destiny,</p>
+        <p>as he declared the Philippines' independence on June 12, 1898.</p>
+        <p>His presidency marked a critical juncture in the nation's history, navigating the challenges of both external and internal conflicts,</p>
+        <p>and subsequently, he became a key figure during the period of American colonization.</p>
+        <p>Despite controversies surrounding his collaboration with the United States,</p>
+        <p>Aguinaldo's vision for a free and sovereign Philippines remains a significant chapter in the country's struggle for autonomy.</p>
+        <p>He is remembered as a patriot who fervently fought for the nation's right to self-governance and independence.</p>
+       </div>
+           
+            <div class="grid">
+              <div class="card" id="lapu-lapu">  
+                <div class="card-content">
+                  <img src="https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.15752-9/393881521_846000014193611_7745943382623672292_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeGOrEge42tsVM6agSRrVZnejf3n3gtG3vmN_efeC0be-Y8G-eEzOdzAL8pgRta1-FcZcVVMWKV6EHYjm5zrZIm9&_nc_ohc=JykqvO8KGtUAX-3tR7g&_nc_ht=scontent.fwnp1-1.fna&oh=03_AdRpVV1OEr9UcbJDxyzqM3uX8YJefHgAGDN-tv7XRTE1bQ&oe=659186BD">
+                    <h3>Lapu Lapu </h3>
+                </div>
+            </div>
+            <div class="description-card" id="lapu-lapu-description" style="display: none;">
+             <h2>Lapu Lapu</h2>
+    <p>Lapu-Lapu, a revered figure in Philippine history, is celebrated for his resistance against Spanish colonization.</p>
+        <p>As the chieftain of Mactan, he valiantly defended the island against the expedition led by Ferdinand Magellan</p>
+        <p>on April 27, 1521, marking one of the earliest displays of Filipino resistance against foreign invaders.</p>
+        <p>Lapu-Lapu's leadership and bravery in the face of adversity embody the spirit of indigenous Filipinos' fight for independence.</p>
+        <p>His victory at the Battle of Mactan became a symbol of Filipino heroism,</p>
+        <p>standing as a testament to the courage and determination of the native people to protect their homeland.</p>
+        <p>His legacy serves as a reminder of the rich history and the unyielding spirit of the Filipino people against external forces.</p>
+        <p>Lapu-Lapu continues to be venerated as a national hero, epitomizing the resilience and pride of the Filipino nation.</p>
+    </div>
+
+
+            <div class="grid">
+               <div class="card" id="tandang-sora">  
+                <div class="card-content">
+                    <img src="https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.15752-9/370481213_854417952952005_8463174435578905153_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeF8SbCRnGz8bj04am_K0xlSXtUZdKtHjy1e1Rl0q0ePLeMHEjsOTX-2SZI51N6TTYjaiCgQkMC-eYz0iB76rh2n&_nc_ohc=DddJs2x38p8AX9_BIl8&_nc_ht=scontent.fwnp1-1.fna&oh=03_AdS-2tlahOLoWNBfeoBPJ9WRKxJ41Jkj7Vcs8KZOxJtL5g&oe=65916C64">
+                    <h3>Tandang Sora </h3>
+                </div>
+            </div>
+            <div class="description-card" id="tandang-sora-description" style="display: none;">
+              <h2>Tandang Sora</h2>
+    <p>Melchora Aquino, widely known as Tandang Sora, was a revered figure in the Philippine revolution.</p>
+        <p>She played an influential role in supporting Filipino revolutionaries against Spanish rule,</p>
+        <p>offering aid, shelter, and sustenance to Katipunan members and soldiers fighting for independence.</p>
+        <p>Tandang Sora's home served as a refuge and a center for secret meetings and gatherings of revolutionaries,</p>
+        <p>earning her the title "Mother of the Philippine Revolution."</p>
+        <p>Her unwavering dedication and sacrifices for the cause of freedom made her an icon of patriotism,</p>
+        <p>as she fearlessly supported the aspirations of the Filipino people for self-rule and independence.</p>
+        <p>Her spirit of compassion, resilience, and unwavering support for the revolutionaries</p>
+        <p>continues to inspire generations, symbolizing the strength and solidarity of the Filipino community.</p>
+    </div>
+
+
+   
+            <div class="grid">
+                <div class="card" id="heneral-luna">   
+                <div class="card-content">
+                    <img src="https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.15752-9/393895943_6902150026538568_5800270053402878834_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeHpGTuB08ATDyEQHcB1u-DksMVWq3Zu1dWwxVardm7V1dWYRONKYHN1Kq0lpGTuOyrWY4wW-c2zJYIYMgbkQjxF&_nc_ohc=hHBGgKQRaJwAX8Hm_yD&_nc_ht=scontent.fwnp1-1.fna&oh=03_AdSJYasKyiqhoHK4O4ukH5yOoLVQ567uQayXNSqhwqbvmA&oe=6591751C">
+                    <h3>Heneral Luna </h3>
+                </div>
+            </div>
+            <div class="description-card" id="heneral-luna-description" style="display: none;">
+               <h2>Heneral Luna</h2>
+        <p>Antonio Luna, known as Heneral Luna, was a passionate and brilliant military strategist</p>
+        <p>who played a vital role in the Philippine-American War and the fight for independence.</p>
+        <p>His leadership and military acumen were instrumental in organizing and fortifying the Philippine forces,</p>
+        <p>earning him a reputation as a fierce and uncompromising general.</p>
+        <p>Heneral Luna was known for his dedication to modernizing the Philippine military,</p>
+        <p>advocating discipline and professionalism to strengthen the country's defense.</p>
+        <p>His unyielding commitment to the cause of Philippine independence and his confrontational style,</p>
+        <p>while effective in battle, also led to conflicts with fellow revolutionaries.</p>
+        <p>Despite his untimely demise, Heneral Luna's legacy endures as a symbol of Filipino patriotism,</p>
+        <p>valor, and the unwavering pursuit of national sovereignty.</p>
+        <p>He remains an iconic figure in Philippine history, revered for his bravery and dedication to the nation.</p>
+    </div>
+   
+             <div class="grid">
+                <div class="card" id="gregorio-pilar"> 
+                <div class="card-content">                 
+                    <img src="https://scontent.fwnp1-1.fna.fbcdn.net/v/t1.15752-9/387477689_1085460172478302_6163408086144793619_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=8cd0a2&_nc_eui2=AeFukETj82vQB-VeCtUoH21ipgWJK8kTqp-mBYkryROqn8lgMa6ZuaUEEV6BhiQhk1DTTEvINhPV3xLMpBPhUxVX&_nc_ohc=iB_WGGSSybsAX9djk-j&_nc_ht=scontent.fwnp1-1.fna&oh=03_AdSs4l45eNTtVakcwsaQsDXb62AXsxLKYhrUAaVrAmZ0_g&oe=65916ACF">
+                    <h3>Gregorio Del Pilar</h3>
+                </div>
+            </div>
+             <div class="description-card" id="gregorio-pilar-description" style="display: none;">
+                 <h2>Gregorio Del Pilar</h2>
+        <p>Gregorio Del Pilar, recognized as one of the youngest generals during the Philippine Revolution,</p>
+        <p>was a valiant and courageous military leader who played a significant role in the fight for independence.</p>
+        <p>His bravery and dedication were showcased prominently during the Philippine-American War,</p>
+        <p>particularly in the Battle of Tirad Pass, where he displayed exceptional heroism and sacrifice.</p>
+        <p>Del Pilar's commitment to the Filipino cause and his unwavering loyalty to the revolution</p>
+        <p>earned him admiration among his comrades and the Filipino people.</p>
+        <p>His legacy as a gallant warrior and his sacrifice at a young age became a symbol of Filipino heroism,</p>
+        <p>representing the unwavering determination and selflessness of the nation's fight for freedom.</p>
+        <p>Gregorio Del Pilar remains an iconic figure in Philippine history, honored for his bravery and sacrifice.</p>
+    </div>
+        </div>
+    </div>
+
+
+<script>
+        function toggleDescription(descriptionId) {
+            const description = document.getElementById(descriptionId);
+            description.style.display = (description.style.display === 'none') ? 'block' : 'none';
+            if (description.style.display === 'block') {
+                description.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Adding click event listeners to each hero card
+        const heroes = [
+            'jose-rizal',
+            'andres-bonifacio',
+            'emilio-aguinaldo',
+            'lapu-lapu',
+            'tandang-sora',
+            'heneral-luna',
+            'gregorio-pilar',
+        ];
+
+        heroes.forEach(heroId => {
+            const card = document.getElementById(heroId);
+            const descriptionId = `${heroId}-description`;
+            card.addEventListener('click', () => toggleDescription(descriptionId));
+        });
+
+    function toggleMenu() {
+        const menu = document.querySelector('.menu-bar');
+        menu.classList.toggle('open');
+    }
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.querySelector(".sidebar").classList.remove("active");
+                    
+                    document.querySelector(".sidebar .toggle-btn").addEventListener("click", function() { 
+                        document.querySelector(".sidebar").classList.toggle("active");
+                    });
+                });
+     
+            </script>     
+         
+        
+        
+</body>
+
+</html>

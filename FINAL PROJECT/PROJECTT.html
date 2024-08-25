@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Alice&family=Norwester&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="project design.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <title>Phil Culture Quest</title>
+   
+    <style>
+       
+    </style>
+</head>
+<body>
+    <header id="searchContainer">
+        <div class="search-toggle">
+            <input type="text" id="searchInput" placeholder="Search here">
+            <i class="fa fa-search"></i>
+        </div>
+        <div id="searchResults"></div>
+    </header>
+    
+    <div class="sidebar active">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="links">
+            <a href="PROJECTT.html" class="active">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+            <a href="Heroes.html">
+                <i class="far fa-user-circle"></i>
+                PHILLIPINE HEROES
+            </a>
+            <a href="Landmarks.html">
+                <i class="fab fa-codepen"></i>
+                NATIONAL LANDMARKS
+            </a>
+            <a href="National Symbols.html">
+                <i class="fa fa-comment-alt"></i>
+                NATIONAL SYMBOLS
+            </a>
+            <a href="Quiz.html">
+                <i class="fa fa-bell"></i>
+                QUIZ
+            </a>
+        </div>
+    </div>
+
+    
+    <section id="front">
+        <h1>PHIL CULTURE QUEST</h1>
+    </section>
+
+    <div class="hcontainer">
+        <div class="history-container">
+              <h2 ><a href="PH History.html">PHILIPPINE HISTORY</a></h2>
+            <div id="history-description" style="display: none;">
+                <p>The Philippines is the only country in Southeast Asia that was subjected to
+                     Western colonization before it had the opportunity to develop either a 
+                     centralized government ruling over a large territory or a dominant culture.
+                      </p>
+                      <h2 ><a href="PH History.html">See more....</a></h2>
+                            
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container-row">
+        <div class="Heroes">
+            <img src="Heroes.jpg" alt="National Hero Image">
+          <h2 ><a href="Heroes.html">NATIONAL HEROES</a></h2>
+        </div>
+        
+        <div class="symbol">
+            <img src="eagle (1).jpg" alt="National Symbols Image">
+          <h2>  <a href="National Symbols.html">NATIONAL SYMBOLS</a> </h2>
+        </div>
+        <div class="landmark">
+            <img src="landmarks.jpg" alt="landmark Image">
+           <h2> <a href="Landmarks.html">NATIONAL LANDMARKS </a> </h2>
+        </div>
+        <div class="quiz">
+            <img src="Quiz.png" alt="quiz Image">
+            <h2> <a href="Quiz.html">QUIZ </a> </h2>
+        </div>
+    </div>
+    
+
+    
+
+    <script>
+document.addEventListener('click', function(event) {
+    const searchContainer = document.getElementById('searchContainer');
+    const isClickInsideSearchContainer = searchContainer.contains(event.target);
+    
+    if (!isClickInsideSearchContainer) {
+        searchResults.style.display = 'none';
+    }
+});
+
+        
+function toggleMenu() {
+        const menu = document.querySelector('.menu-bar');
+        menu.classList.toggle('open');
+    }
+
+                document.addEventListener("DOMContentLoaded", function () {
+                    document.querySelector(".sidebar").classList.remove("active");
+                    
+                    document.querySelector(".sidebar .toggle-btn").addEventListener("click", function() { 
+                        document.querySelector(".sidebar").classList.toggle("active");
+                    });
+                });
+                const items = [
+            { keyword: 'National Heroes', link: 'Heroes.html' },
+            { keyword: 'National Symbols', link: 'National Symbols.html' },
+            { keyword: 'Landmarks', link: 'Landmarks.html' },
+            { keyword: 'Quiz', link: 'Quiz.html' },
+            { keyword: 'Jose Rizal', link: 'Heroes.html' },
+            { keyword: 'Andress bonifacio', link: 'Heroes.html' },
+            { keyword: 'Emilio Aguinaldo', link: 'Heroes.html' },
+            { keyword: 'Lapu Lapu', link: 'Heroes.html' },
+            { keyword: 'Tandang Sora', link: 'Heroes.html' },
+            { keyword: 'Gregorio Del Pilar', link: 'Heroes.html' },
+            { keyword: 'Philippine Eagle', link: 'National Symbols.html' },
+            { keyword: 'Narra Tree', link: 'National Symbols.html' },
+            { keyword: 'Bangus', link: 'National Symbols.html' },
+            { keyword: 'National House', link: 'National Symbols.html' },
+            { keyword: 'Mango', link: 'National Symbols.html' },
+            { keyword: 'Lupang Hinirang', link: 'National Symbols.html' },
+            { keyword: 'Sampaguita', link: 'National Symbols.html' },
+            { keyword: 'Watawat/Philippine Flag', link: 'National Symbols.html' },
+            { keyword: 'Arnis', link: 'National Symbols.html' },
+            { keyword: 'Barong Tagalog and Barot Saya', link: 'National Symbols.html' },
+            { keyword: 'Anahaw', link: 'National Symbols.html' },
+            { keyword: 'Tinikling', link: 'National Symbols.html' },
+            { keyword: 'Mt. Mayon Volcano', link: 'National Landmarks.html' },
+            { keyword: 'Basco Light House', link: 'National Landmarks.html' },
+            { keyword: 'puerto princesa', link: 'National Landmarks.html' },
+            { keyword: 'banaue rice terraces', link: 'National Landmarks.html' },
+            { keyword: 'Boracay', link: 'National Landmarks.html' },
+            { keyword: 'Bangui Windmills', link: 'National Landmarks.html' },
+            { keyword: 'Chocolate Hills', link: 'National Landmarks.html' },
+            { keyword: 'Chocolate Hills', link: 'National Landmarks.html' },
+            { keyword: 'Tubbataha Reef', link: 'National Landmarks.html' },
+            { keyword: 'Fort Santiago', link: 'National Landmarks.html' },
+            { keyword: 'Taal Lake', link: 'National Landmarks.html' },           
+             { keyword: 'Magellan s Church', link: 'National Landmarks.html' },
+             { keyword: 'Rizal Park', link: 'National Landmarks.html' },
+             { keyword: 'history', link: 'PH History.html' },
+
+
+
+
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        const searchContainer = document.getElementById('searchContainer');
+
+        // Menu
+        function toggleElementsVisibility() {
+            const elementsToShow = ['Heroes', 'symbol', 'landmark', 'quiz',];
+
+           
+            elementsToShow.forEach(element => {
+                const elementDiv = document.querySelector(`.${element}`);
+                elementDiv.classList.toggle('visible');
+            });
+
+            // search results container
+            searchResults.style.display = 'block';
+        }
+
+        // pang update sa search results
+        function updateResults() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            // pang remove sa recent result items parang buffer
+            searchResults.innerHTML = '';
+
+            // tolower small or bigletter ma sesearch pa din
+            const filteredItems = items.filter(item => item.keyword.toLowerCase().includes(searchTerm));
+
+            // Display the search results su na filter na 
+            filteredItems.forEach(item => {
+                const resultItem = document.createElement('div');
+                resultItem.textContent = item.keyword;
+                resultItem.classList.add('resultItem');
+                resultItem.addEventListener('click', () => {
+
+                    // Redirect to the specified link when an item is clicked
+                 window.location.href = item.link;
+                });
+                searchResults.appendChild(resultItem);
+            });
+
+            // Show the search results container
+            searchResults.style.display = filteredItems.length > 0 ? 'block' : 'none';
+        }
+
+        // Attach the toggleElementsVisibility function to the click event of the search input
+        searchInput.addEventListener('click', toggleElementsVisibility);
+
+        // Attach the updateResults function to the input event of the search input
+        searchInput.addEventListener('input', updateResults);
+
+        // Detect clicks outside the search container to hide the search results
+        document.addEventListener('click', function(event) {
+    const searchContainer = document.getElementById('searchContainer');
+    const isClickInsideSearchContainer = searchContainer.contains(event.target);
+    
+    if (!isClickInsideSearchContainer) {
+        searchResults.style.display = 'none';
+    }
+});
+
+
+  
+    </script>
+</body>
+</html>

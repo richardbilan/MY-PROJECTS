@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Comatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhilCulture Quest Quiz</title>
+    <link rel="stylesheet" href="QuizStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-dTBDiINDc7dRZN1fEJrF6Yc5zgqgck2VO7h9cME3a5ihxVtQ5T2y5i0Q1nM21I1W" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+</head>
+
+<body>
+    <div class="sidebar active">
+        <div class="toggle-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    
+        <div class="links">
+            <a href="PROJECTT.html" class="active">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+            <a href="Heroes.html">
+                <i class="far fa-user-circle"></i>
+                PHILLIPINE HEROES
+            </a>
+            <a href="Landmarks.html">
+                <i class="fab fa-codepen"></i>
+                NATIONAL LANDMARKS
+            </a>
+            <a href="National Symbols.html">
+                <i class="fa fa-comment-alt"></i>
+                NATIONAL SYMBOLS
+            </a>
+            <a href="Quiz.html">
+                <i class="fa fa-bell"></i>
+                QUIZ
+            </a>
+        </div>
+    </div>
+    <main class="main">
+      
+
+        <div class="container">
+    <section class="quiz-section">
+        <div class="quiz-box">
+            <h1>Quiz</h1>
+            <div class="quiz-header">
+                <span> Welcome to PhilCulture Quiz</span>
+                <span class="header-score">Score 0 / 15</span>
+            </div>
+
+            <h2 class="question-text">Who is known as the Sublime Paralytic and is considered a national hero for his role in the Philippine Revolution against Spanish colonization?</h2>
+             <div class="option-list">
+                <div class="option">
+                    <span>A. José Rizal</span>
+                </div>
+                <div class="option">
+                    <span>B. Andres Bonifacio</span>
+                </div>
+                <div class="option">
+                    <span>C. Emilio Aguinaldo</span>
+                </div>
+                <div class="option">
+                    <span>D. Apolinario Mabini</span>
+                </div>
+            </div>
+
+            <div class="quiz-footer">
+                <span class="question-total">1 of 15</span>
+                <button class="next-btn">Next Page</button>
+            </div> 
+        </div>
+
+                <div class="result-box">
+                    <h2>Quiz Result</h2>
+                    <div class="percentage-container">
+                        <span class="score-text">Your score is 0 out of 15</span>
+                    </div>
+                    <div class="buttons">
+                        <button class="reigniteyourquestAgain-btn">Reignite your quest again!</button>
+                        <button class="returntothecosmicNexus-btn">Return to home</button>
+                    </div>
+                </div>
+                
+            </section>
+            <section class="home">
+                <div class="home-content">
+                    <h3>Phil Culture Quest Quiz</h3>
+                    <hr>
+                    <hr>
+                    <button class="start-btn">Start Quest</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="popup-info">
+        <h2>Quest Guide</h2>
+        <span class="info"><h4>Quick Start:</h4>  Immerse yourself in the wonders of Philippine culture with our PhilCulture Quest Quiz. Your epic journey through the rich tapestry of history and traditions starts here!</span>
+        <span class="info"><h4>Choose Wisely:</h4> Select your answers carefully as you navigate through the diverse realms of Philippine Culture. Will you delve into the stories of national heroes or uncover the symbolism behind cherished national emblems? Your choices shape your adventure.</span>
+        <span class="info"><h4>Quiz Mastery:</h4>  Become a PhilCulture Quiz Master. Learn how scoring works and boost your knowledge to conquer the challenges that await you in the quest for Philippine cultural wisdom.</span>
+        <span class="info"><h4>Crack the code:</h4> Unveil the secrets of the archipelago. Conquer challenging questions and enhance your understanding of the unique aspects of PhilCulture.</span>
+        <span class="info"><h4>Join the Adventure:</h4>  Be part of our cultural community. Share, discuss, and shape the future of our PhilCulture Quest. Together, let's celebrate the richness of Philippine heritage!</span>
+
+        <div class="btn-group">
+            <button class="info-btn exit-btn">Exit Quiz</button>
+            <a href="#" class="info-btn continue-btn">Continue</a>
+        </div>
+    </div>
+
+
+    <script src="QuizQuestions.js"></script>
+    <script src="QuizScript.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".sidebar").classList.remove("active");
+
+            document.querySelector(".sidebar .toggle-btn").addEventListener("click", function() { 
+                document.querySelector(".sidebar").classList.toggle("active");
+            });
+        });
+    </script>
+</body>
+</html>
